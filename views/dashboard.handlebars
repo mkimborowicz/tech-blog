@@ -1,5 +1,16 @@
-<h1>this is the  dashboard page</h1>
+{{user.username}}
+<br>
+<br>
+   {{#each userPosts}}
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6>
+    <a href="/posts/{{posts.id}}"><h4 class="card-title">{{title}}</h4></a>
+    <p class="card-text">{{content}}</p>
+  </div>
 
+</div>
+    {{/each}}
 
 
 <a href="/dashboard/new" type="button">Create New Post</a>

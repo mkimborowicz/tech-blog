@@ -5,6 +5,12 @@ class Posts extends Model {}
 
 Posts.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -16,7 +22,6 @@ Posts.init(
   },
   {
     sequelize,
-
   }
 );
 module.exports = Posts;
