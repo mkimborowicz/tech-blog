@@ -3,7 +3,7 @@ const { Posts, User } = require("../models");
 const withAuth = require("../utils/auth");
 
 // get homepage
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const blogPostData = await Posts.findAll({
       include: [User],
@@ -41,28 +41,36 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-// get profile
-router.get("/dashboard", withAuth, async (req, res) => {
-  // Use req.session.user_id to get the current user
-  const userData = await User.findByPk(req.session.user_id);
+// Get single post view
+router.get("/posts/:id", async (req, res) => {
+  try {
+    const postData = await Posts.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        // },
+        // {
+        //   model: Comment,
+        //   attributes: ["comment", "date", "user_id"],
+        //   include: [
+        //     {
+        //       model: User,
+        //       attributes: ["username"],
+        //     },
+        //   ],
+        },
+      ],
+    });
 
-  // This is a fancy way of mapping the userData and returning it in JSON format
-  const user = userData.get({ plain: true });
-
-  const userPostData = await Posts.findAll({
-    include: [
-      {
-        model: User,
-      },
-    ],
-    where: { id: req.session.user_id },
-  });
-  const userPosts = userPostData.map((posts) => posts.get({ plain: true }));
-  res.render("dashboard", {
-    userPosts,
-    user,
-    logged_in: req.session.logged_in,
-  });
+    const posts = postData.get({ plain: true });
+    res.render("singlepost", {
+      ...posts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
