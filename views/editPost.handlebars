@@ -1,16 +1,16 @@
-<form id="new-post-form">
+<form id="edit-post-form">
   <div class="mb-3" style="width: 40rem">
 
     <input type="hidden" class="form-control" id="post-id" value="{{id}}" />
     <label for="exampleInputEmail1" class="form-label">Title</label>
-    <input type="text" class="form-control" id="post-title" value="{{title}}" />
+    <input type="text" class="form-control" id="edit-title" value="{{title}}" />
   </div>
   <div class="mb-3" style="width: 40rem">
     <label for="exampleInputPassword1" class="form-label">Content</label>
-    <textarea class="form-control" id="post-content">{{content}}</textarea>
+    <textarea class="form-control" id="edit-content">{{content}}</textarea>
   </div>
-  <button type="submit" class="btn btn-primary">Update</button>
-  <button type="button" class="btn btn-danger">Delete</button>
+  <button type="submit" class="btn btn-dark btn-lg">Update</button>
+  <button type="button" id="delete-btn" class="btn btn-danger btn-lg">Delete</button>
 </form>
 
-{{! <script src = "/js/new.js"></script> }}
+<script src = "/js/editPost.js"></script>
