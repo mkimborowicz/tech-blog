@@ -2,11 +2,30 @@
   <div class="card-body">
 
     <h6 class="card-subtitle mb-2 text-muted">{{user.username}}</h6>
-   <h4 class="card-title">{{title}}</h4>
+    <h4 class="card-title">{{title}}</h4>
     <p class="card-text">{{content}}</p>
   </div>
 
 </div>
+
+{{#if post.Comments}}
+  <div class="card" style="width: 40rem;">
+    <div class="card-header">
+      <h3>Comments</h3>
+    </div>
+    <div class="card-body">
+      {{#each}}
+        <div>
+          <h6 class="card-subtitle mb-2 text-muted">{{user.username}} </h6>
+      
+          <p class="card-text">{{commentText}}</p>
+        </div>
+      {{/each}}
+    </div>
+
+  </div>
+
+{{/if}}
 
 <div class="card" style="width: 40rem;">
   <div class="card-body">
