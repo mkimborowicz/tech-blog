@@ -2,7 +2,7 @@
    {{#each userPosts}}
   <div class="card" style="width: 40rem;">
   <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted">{{date}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">{{format_date createdAt}}</h6>
     <a href="/dashboard/editpost/{{id}}"><h4 class="card-title">{{title}}</h4></a>
     <p class="card-text">{{content}}</p>
   </div>
@@ -13,4 +13,4 @@
     {{/each}}
 
 
-<a href="/dashboard/new" type="button" id="create-post-btn" class="btn btn-lg btn-dark">Create New Post</a>
+<a href="/dashboard/new" type="button" id="create-post-btn" class="btn btn-lg btn-dark">+ Create New Post</a>

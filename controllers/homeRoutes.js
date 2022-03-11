@@ -49,7 +49,7 @@ router.get("/posts/:id", async (req, res) => {
        User, {
         model: Comments,
         include: [User]
-       }     
+       }
       ],
     });
 
