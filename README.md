@@ -7,3 +7,8 @@ By logging in and clicking "dashboard" in the nav bar, the user will see the opt
 
 
 ![](./Assets/SS2.png)
+
+
+Link To Deployed Heroku Application
+
+https://mk-tech-blog.herokuapp.com/
